@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useHttpRequest from '../../hooks/use-http-request';
 import { STRINGS } from '../../global/constants';
+import Character from '../character';
 
 const { FETCH_CHARS_URL } = STRINGS;
 
@@ -14,12 +15,7 @@ export default function Home() {
 
    return (
       <>
-         {characters.map(character => (
-            <div key={character.id}>
-               <h4>{character.name}</h4>
-               <p>{character.description}</p>
-            </div>
-         ))}
+         {characters.map(character => <Character key={character.id} config={character} />)}
       </>
    );
 }
