@@ -17,4 +17,8 @@
     border-radius: 0 $default-size;
     background-color: map-get($colors, title);
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
