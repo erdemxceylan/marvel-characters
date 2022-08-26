@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import store from '../global/redux';
+import { store } from '../global/redux';
 import Head from 'next/head';
 import Layout from '../layout';
 import '../styles/globals.scss';

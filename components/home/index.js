@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-// import useHttpRequest from '../../hooks/use-http-request';
-import axios from 'axios';
+import useHttpRequest from '../../hooks/use-http-request';
+import { useSelector, useDispatch } from 'react-redux';
+import { update } from '../../global/redux/characters';
 import { STRINGS } from '../../global/constants';
 import Character from '../character';
 import styles from './styles.module.scss';
@@ -8,32 +8,24 @@ import styles from './styles.module.scss';
 const { FETCH_CHARS_URL } = STRINGS;
 
 export default function Home() {
-   const [characters, setCharacters] = useState([]);
-   const [isLoading, setIsLoading] = useState(false);
-   // const { isLoading, sendRequest: fetchCharacters } = useHttpRequest();
+   const characters = useSelector(state => state.chars.characters);
+   const offset = useSelector(state => state.chars.offset);
+   const dispatch = useDispatch();
+   const { isLoading, sendRequest: fetchCharacters } = useHttpRequest();
 
-   async function fetchCharacters() {
-      setIsLoading(true);
-      const response = await axios.post(FETCH_CHARS_URL, { offset: 5 });
-      const data = response.data;
-      data && setCharacters(data);
-      setIsLoading(false);
-   }
-
-   // let response;
-
-   useEffect(() => {
-      // fetchCharacters({ url: FETCH_CHARS_URL }, data => data && setCharacters(data));
-      fetchCharacters();
-   }, []);
-
-   if (isLoading) {
-      return <h1>Loading..</h1>;
+   function clickHandler() {
+      fetchCharacters({
+         url: FETCH_CHARS_URL,
+         method: 'POST',
+         body: { offset }
+      }, data => data && dispatch(update({ newCharacters: data })));
    }
 
    return (
       <div className={styles.container}>
          {characters.length > 0 && characters.map(character => <Character key={character.id} config={character} />)}
+         {isLoading && <h1>Loading..</h1>}
+         <button onClick={clickHandler}>Load more</button>
       </div>
    );
 }

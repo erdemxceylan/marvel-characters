@@ -1,21 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { counter: 0, showCounter: true };
+const initialState = { characters: [], offset: 0 };
 
 const charSlice = createSlice({
    name: 'characters',
    initialState,
    reducers: {
-      delete(state, action) {
-         const updatedConsumedNutrients = state.consumedNutrients.filter(nutrient => nutrient.id !== action.payload.id);
-         state.consumedNutrients = updatedConsumedNutrients;
-         state.totalCalories -= action.payload.calories;
-         state.totalProteins -= action.payload.proteins;
-         state.isEmpty = state.consumedNutrients.length > 0 ? false : true;
-      },
-      increase(state, action) { state.counter += action.payload; },
+      update(state, action) {
+         state.characters = [...state.characters, ...action.payload.newCharacters];
+         state.offset += 30;
+      }
    }
 });
 
-export const charActions = charSlice.actions;
+export const { update } = charSlice.actions;
 export default charSlice.reducer;
