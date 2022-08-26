@@ -1,0 +1,14 @@
+@import '../../styles/variables';
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, $char-width + $default-size);
+  grid-gap: $default-size;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  max-width: 110rem;
+  min-width: 20rem;
+  margin: 0 auto;
+}
