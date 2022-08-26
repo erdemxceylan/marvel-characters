@@ -1,17 +1,23 @@
-import useHttpRequest from '../../hooks/use-http-request';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { update } from '../../global/redux/characters';
-import { STRINGS } from '../../global/constants';
+import { CONSTANTS } from '../../global/constants';
+import useHttpRequest from '../../hooks/use-http-request';
 import Character from '../character';
 import styles from './styles.module.scss';
 
-const { FETCH_CHARS_URL } = STRINGS;
+const { FETCH_CHARS_URL } = CONSTANTS;
 
-export default function Home() {
+export default function Home(props) {
+   const { initialCharacters } = props;
    const characters = useSelector(state => state.chars.characters);
    const offset = useSelector(state => state.chars.offset);
    const dispatch = useDispatch();
    const { isLoading, sendRequest: fetchCharacters } = useHttpRequest();
+
+   useEffect(() => {
+      dispatch(update({ newCharacters: initialCharacters }));
+   }, []);
 
    function clickHandler() {
       fetchCharacters({
