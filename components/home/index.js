@@ -8,11 +8,15 @@ const { FETCH_CHARS_URL } = STRINGS;
 
 export default function Home() {
    const [characters, setCharacters] = useState([]);
-   const { sendRequest: fetchCharacters } = useHttpRequest();
+   const { isLoading, sendRequest: fetchCharacters } = useHttpRequest();
 
    useEffect(() => {
       fetchCharacters({ url: FETCH_CHARS_URL }, data => data && setCharacters(data));
    }, []);
+
+   if (isLoading) {
+      return <h1>Loading..</h1>;
+   }
 
    return (
       <div className={styles.container}>

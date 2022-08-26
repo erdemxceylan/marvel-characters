@@ -1,8 +1,7 @@
 import styles from './styles.module.scss';
 
 export default function Character(props) {
-   const { config } = props;
-   const { name/*, thumbnail*/ } = config;
+   const { name/*, thumbnail*/ } = props.config;
 
    return (
       <div className={styles.container}>
