@@ -7,7 +7,7 @@ export default function HomePage(props) {
    return <Home initialCharacters={characters} />;
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
    const characters = await fetchCharacters(0);
 
    return { props: { characters: JSON.parse(JSON.stringify(characters)) } };

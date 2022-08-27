@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-   const id = context.params.charId;
+   const id = context.params.id;
 
    // fetch details for that charId
 
