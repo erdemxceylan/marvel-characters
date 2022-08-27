@@ -1,9 +1,13 @@
-import { fetchCharacters, fetchCharById, fetchComics } from './api/functions';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 import Head from 'next/head';
 import Details from '../components/details';
 
-export default function CharacterDetailsPage(props) {
-   const { name, description } = props.details;
+export default function CharacterDetailsPage() {
+   const router = useRouter();
+   const characters = useSelector(state => state.chars.characters);
+   const character = characters.find(char => char.id == router.query.id);
+   const { name, description } = character;
 
    return (
       <>
@@ -11,30 +15,7 @@ export default function CharacterDetailsPage(props) {
             <title>{name}</title>
             <meta name='description' content={description} />
          </Head>
-         <Details
-            // image={image}
-            name={name}
-            description={description}
-         />
+         <Details config={character} />
       </>
    );
-}
-
-export async function getStaticPaths() {
-   const characters = await fetchCharacters(0);
-
-   return {
-      fallback: 'blocking',
-      paths: characters.map(character => { return { params: { id: character.id.toString() } }; })
-   };
-}
-
-export async function getStaticProps(context) {
-   const id = context.params.id;
-   const character = await fetchCharById(id);
-   const { name, description, thumbnail } = character;
-   const comics = await fetchComics(id);
-   const details = { id, name, description, thumbnail, comics };
-
-   return { props: { details } };
 }

@@ -16,7 +16,7 @@ export default function Home(props) {
    const { isLoading, sendRequest: fetchCharacters } = useHttpRequest();
 
    useEffect(() => {
-      dispatch(update({ newCharacters: initialCharacters }));
+      characters.length === 0 && dispatch(update({ newCharacters: initialCharacters }));
    }, []);
 
    function clickHandler() {
@@ -29,7 +29,7 @@ export default function Home(props) {
 
    return (
       <div className={styles.container}>
-         {characters.length > 0 && characters.map(character => <Character key={character.id} config={character} />)}
+         {characters?.length > 0 && characters.map(character => <Character key={character.id} config={character} />)}
          {isLoading && <h1>Loading..</h1>}
          <button onClick={clickHandler}>Load more</button>
       </div>
