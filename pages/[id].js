@@ -9,12 +9,12 @@ import Details from '../components/details';
 const { FETCH_COMICS_URL } = CONSTANTS;
 
 export default function CharacterDetailsPage() {
-   const [comics, setComics] = useState(null);
    const router = useRouter();
    const id = router.query.id;
    const characters = useSelector(state => state.chars.characters);
    const character = characters.find(char => char.id == id);
    const { name, description } = character;
+   const [comics, setComics] = useState(null);
    const { isLoading, sendRequest: fetchComics } = useHttpRequest();
 
    useEffect(() => {

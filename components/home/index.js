@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { update } from '../../global/redux/characters';
 import { CONSTANTS } from '../../global/constants';
 import useHttpRequest from '../../hooks/use-http-request';
-import Character from '../character';
+import Card from '../card';
 import styles from './styles.module.scss';
 
 const { FETCH_CHARS_URL } = CONSTANTS;
@@ -30,7 +30,7 @@ export default function Home(props) {
 
    return (
       <div className={styles.container}>
-         {!isEmpty && characters.map(character => <Character key={character.id} config={character} />)}
+         {!isEmpty && characters.map(character => <Card key={character.id} config={character} />)}
          {isLoading && <h1>Loading..</h1>}
          <button onClick={clickHandler}>Load more</button>
       </div>

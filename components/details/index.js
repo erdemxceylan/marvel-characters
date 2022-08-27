@@ -1,3 +1,5 @@
+import Card from '../card';
+
 export default function Details(props) {
    console.log('details comp', props.config);
 
@@ -12,13 +14,7 @@ export default function Details(props) {
          <div>{description}</div>
          <img src={`${path}.${extension}`} />
          {isLoading && <div>Loading..</div>}
-         {!isLoading && comics?.map(comic => (
-            <div key={comic.id}>
-               <h4>{comic.title}</h4>
-               <p>{comic.description}</p>
-               <a href={comic.link}>link</a>
-            </div>
-         ))}
+         {!isLoading && comics?.map(comic => <Card key={comic.id} config={comic} comic />)}
       </>
    );
 }
