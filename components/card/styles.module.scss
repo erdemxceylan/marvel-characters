@@ -40,34 +40,39 @@
   min-height: $small-height + $default-size * 2;
   padding: $default-size;
 
-  img {
-    border: $border;
-    border-radius: 0 $default-size;
-    position: absolute;
-    left: $default-size;
-    height: $small-height;
-  }
-
-  h4,
+  img,
   p {
-    margin-left: $default-size * 10;
-    margin-right: $default-size;
-    text-align: center;
+    display: none;
   }
 
-  p {
-    margin-top: $default-size / 2;
-    font-size: $default-size * 2 / 3;
+  h4 {
+    margin: 0;
   }
 
-  @include mixins.media-max-width(90rem) {
+  @include mixins.media-min-width(90rem) {
     img,
     p {
-      display: none;
+      display: block;
     }
 
-    h4 {
-      margin: 0;
+    img {
+      border: $border;
+      border-radius: 0 $default-size;
+      position: absolute;
+      left: $default-size;
+      height: $small-height;
+    }
+
+    h4,
+    p {
+      margin-left: $default-size * 10 !important;
+      margin-right: $default-size !important;
+      text-align: center !important;
+    }
+
+    p {
+      margin-top: $default-size / 2;
+      font-size: $default-size * 2 / 3;
     }
   }
 }

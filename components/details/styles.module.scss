@@ -8,13 +8,16 @@
 
   h1,
   h2,
-  h3 {
-    @include mixins.adjust-text;
+  h3,
+  h4 {
+    margin: $default-size 0;
+    font-size: $default-size;
+    text-align: center;
   }
 
   .group {
     position: relative;
-    @include mixins.flex(row, space-between, flex-start);
+    @include mixins.flex;
 
     & > img:nth-child(1),
     .sub-group {
@@ -35,18 +38,18 @@
       }
     }
 
-    @include mixins.media-max-width(90rem) {
-      @include mixins.flex;
+    @include mixins.media-min-width(90rem) {
+      @include mixins.flex(row, space-between, flex-start);
     }
   }
 
-  @include mixins.media-max-width(40rem) {
-    h1,
-    h2,
-    h3,
-    h4 {
-      margin: $default-size 0;
-      font-size: $default-size;
+  @include mixins.media-min-width(40rem) {
+    h1 {
+      font-size: $default-size * 2;
+    }
+
+    h2 {
+      font-size: $default-size * 1.5;
     }
   }
 }
