@@ -5,18 +5,18 @@
   position: relative;
   @include mixins.flex(row, space-around, flex-start);
 
-  img,
+  img:nth-child(1),
   .group {
     width: 40%;
   }
 
   .group > h2,
   .group > div,
-  img {
+  img:nth-child(1) {
     margin: $default-size * 2 0;
   }
 
-  img {
+  img:nth-child(1) {
     border: $default-size / 4 solid black;
     border-radius: $default-size;
   }

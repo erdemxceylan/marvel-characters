@@ -13,12 +13,11 @@ export default function Card(props) {
 
    return (
       <div
-         className={styles.container}
-         /* className={comic ? styles['container-comic'] : styles.contianer} */
+         className={comic ? styles['container-comic'] : styles.container}
          onClick={onClick}
       >
-         <h4>{title}</h4>
          <img src={src} />
+         <h4>{title}</h4>
          {comic && <p>{description || 'Description is not provided'}</p>}
       </div>
    );

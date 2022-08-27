@@ -5,3 +5,5 @@ $colors: (
 $default-size: 1rem;
 $char-width: 15rem;
 $char-height: 25rem;
+$shadow-size: $default-size / 4;
+$shadow: $shadow-size $shadow-size $shadow-size grey;

@@ -3,7 +3,7 @@
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, $char-width + $default-size);
-  grid-gap: $default-size;
+  grid-gap: $default-size * 2;
   justify-items: center;
   align-items: center;
   justify-content: center;
