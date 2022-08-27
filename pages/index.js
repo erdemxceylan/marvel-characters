@@ -10,5 +10,5 @@ export default function HomePage(props) {
 export async function getStaticProps() {
    const characters = await fetchCharacters(0);
 
-   return { props: { characters: JSON.parse(JSON.stringify(characters)) } };
+   return { props: { characters } };
 }

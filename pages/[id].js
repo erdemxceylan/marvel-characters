@@ -1,5 +1,6 @@
+import { fetchCharacters, fetchCharById, fetchComics } from './api/functions';
 import Head from 'next/head';
-import CharacterDetails from '../components/character-details';
+import Details from '../components/details';
 
 export default function CharacterDetailsPage(props) {
    const { name, description } = props.details;
@@ -10,7 +11,7 @@ export default function CharacterDetailsPage(props) {
             <title>{name}</title>
             <meta name='description' content={description} />
          </Head>
-         <CharacterDetails
+         <Details
             // image={image}
             name={name}
             description={description}
@@ -20,27 +21,20 @@ export default function CharacterDetailsPage(props) {
 }
 
 export async function getStaticPaths() {
-   // fetch chars -> current 30 chars is needed
+   const characters = await fetchCharacters(0);
 
    return {
       fallback: 'blocking',
-      paths: characters.map(character => { return { params: { charId: character.id.toString() } }; })
+      paths: characters.map(character => { return { params: { id: character.id.toString() } }; })
    };
 }
 
 export async function getStaticProps(context) {
    const id = context.params.id;
+   const character = await fetchCharById(id);
+   const { name, description, thumbnail } = character;
+   const comics = await fetchComics(id);
+   const details = { id, name, description, thumbnail, comics };
 
-   // fetch details for that charId
-
-   return {
-      props: {
-         details: {
-            id: id.toString(),
-            name,
-            // image,
-            description
-         }
-      }
-   };
+   return { props: { details } };
 }
