@@ -2,22 +2,37 @@
 @import '../../styles/variables';
 
 .container {
-  position: relative;
-  @include mixins.flex(row, space-around, flex-start);
+  @include mixins.flex(column, center, stretch);
+  max-width: 120rem;
+  margin: 0 auto;
 
-  img:nth-child(1),
+  h1,
+  h2,
+  h3 {
+    @include mixins.adjust-text;
+  }
+
   .group {
-    width: 40%;
-  }
+    position: relative;
+    @include mixins.flex(row, space-between, flex-start);
 
-  .group > h2,
-  .group > div,
-  img:nth-child(1) {
-    margin: $default-size * 2 0;
-  }
+    & > img:nth-child(1),
+    .sub-group {
+      width: 45%;
+    }
 
-  img:nth-child(1) {
-    border: $default-size / 4 solid black;
-    border-radius: $default-size;
+    & > img:nth-child(1),
+    .sub-group > div {
+      @include mixins.adjust-text;
+    }
+
+    & > img:nth-child(1) {
+      border: $border;
+      border-radius: $default-size;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }

@@ -5,6 +5,7 @@
 .container-comic {
   position: relative;
   background-color: map-get($colors, bg);
+  border-radius: 0 $default-size;
   box-shadow: $shadow;
 
   &:hover {
@@ -16,7 +17,6 @@
 
 .container {
   @include mixins.char-size;
-  border-radius: 0 $default-size;
 
   img {
     width: $char-width;
@@ -37,29 +37,26 @@
 
 .container-comic {
   width: 100%;
-  //   height: 5.5rem;
-  border-radius: $default-size;
+  min-height: $small-height + $default-size * 2;
+  padding: $default-size;
 
   img {
+    border: $border;
+    border-radius: 0 $default-size;
     position: absolute;
-    left: 0;
-    width: 7rem;
-    margin: 0;
+    left: $default-size;
+    height: $small-height;
   }
 
   h4,
   p {
-    margin-left: 7rem + $default-size;
-    //  width: 50%;
+    margin-left: $default-size * 10;
     margin-right: $default-size;
     text-align: center;
   }
 
-  //   h4 {
-  //     width: 40%;
-  //   }
-
-  //   p {
-  //     width: 60%;
-  //   }
+  p {
+    margin-top: $default-size / 2;
+    font-size: $default-size * 2 / 3;
+  }
 }

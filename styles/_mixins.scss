@@ -14,3 +14,8 @@
   width: $char-width;
   height: $char-height;
 }
+
+@mixin adjust-text {
+  margin: $default-size * 2 0;
+  text-align: center;
+}
