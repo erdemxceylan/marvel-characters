@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { update } from '../../global/redux/characters';
 import { CONSTANTS } from '../../global/constants';
@@ -15,24 +15,36 @@ export default function Home(props) {
    const offset = useSelector(state => state.chars.offset);
    const dispatch = useDispatch();
    const { isLoading, sendRequest: fetchCharacters } = useHttpRequest();
+   const [end, setEnd] = useState(false);
+
+   function onScroll() {
+      if (document.documentElement.scrollTop + ((window.innerHeight * 3) / 2) >= document.documentElement.offsetHeight) {
+         !end && setEnd(true);
+      } else {
+         end && setEnd(false);
+      }
+   }
 
    useEffect(() => {
-      isEmpty && dispatch(update({ newCharacters: initialCharacters }));
-   }, []);
+      window.addEventListener('scroll', onScroll);
 
-   function clickHandler() {
-      fetchCharacters({
-         url: FETCH_CHARS_URL,
-         method: 'POST',
-         body: { offset }
-      }, data => data && dispatch(update({ newCharacters: data })));
-   }
+      if (isEmpty) {
+         dispatch(update({ newCharacters: initialCharacters }));
+      } else if (end && !isLoading) {
+         fetchCharacters({
+            url: FETCH_CHARS_URL,
+            method: 'POST',
+            body: { offset }
+         }, data => data && dispatch(update({ newCharacters: data })));
+      }
+
+      return () => window.removeEventListener('scroll', onScroll);
+   }, [end]);
 
    return (
       <div className={styles.container}>
          {!isEmpty && characters.map(character => <Card key={character.id} config={character} />)}
          {isLoading && <h1>Loading..</h1>}
-         <button onClick={clickHandler}>Load more</button>
       </div>
    );
 }
