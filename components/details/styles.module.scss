@@ -34,5 +34,19 @@
         cursor: pointer;
       }
     }
+
+    @include mixins.media-max-width(90rem) {
+      @include mixins.flex;
+    }
+  }
+
+  @include mixins.media-max-width(40rem) {
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: $default-size 0;
+      font-size: $default-size;
+    }
   }
 }

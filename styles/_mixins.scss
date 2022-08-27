@@ -19,3 +19,9 @@
   margin: $default-size * 2 0;
   text-align: center;
 }
+
+@mixin media-max-width($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}

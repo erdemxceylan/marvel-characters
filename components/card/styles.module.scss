@@ -59,4 +59,15 @@
     margin-top: $default-size / 2;
     font-size: $default-size * 2 / 3;
   }
+
+  @include mixins.media-max-width(90rem) {
+    img,
+    p {
+      display: none;
+    }
+
+    h4 {
+      margin: 0;
+    }
+  }
 }
