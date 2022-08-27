@@ -1,4 +1,4 @@
-import { fetchCharacters } from './api/functions';
+import { fetchCharacters } from './api/utils/functions';
 import Home from '../components/home';
 
 export default function HomePage(props) {

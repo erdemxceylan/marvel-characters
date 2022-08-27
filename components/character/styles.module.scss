@@ -3,10 +3,13 @@
 
 .container {
   position: relative;
-  width: $char-width;
-  height: $char-height;
+  @include mixins.char-size;
   border-radius: $default-size;
   background-color: map-get($colors, bg);
+
+  img {
+    @include mixins.char-size;
+  }
 
   h4 {
     @include mixins.flex;

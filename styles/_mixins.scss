@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin flex($direction: column, $main-axis: center, $cross-axis: center) {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6,4 +8,9 @@
   flex-direction: $direction;
   justify-content: $main-axis;
   align-items: $cross-axis;
+}
+
+@mixin char-size {
+  width: $char-width;
+  height: $char-height;
 }
