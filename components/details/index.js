@@ -1,7 +1,7 @@
 export default function Details(props) {
    console.log('details comp', props.config);
 
-   const { id, name, description, thumbnail, comics } = props.config;
+   const { id, name, description, /*thumbnail, comics, isLoading */ } = props.config;
 
    return (
       <>
@@ -10,7 +10,7 @@ export default function Details(props) {
          <div>{name}</div>
          <div>{description}</div>
          {/* <div>{thumbnail}</div> */}
-         <div>{comics}</div>
+         {/* <div>{comics}</div> */}
       </>
    );
 }

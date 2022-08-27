@@ -11,12 +11,13 @@ const { FETCH_CHARS_URL } = CONSTANTS;
 export default function Home(props) {
    const { initialCharacters } = props;
    const characters = useSelector(state => state.chars.characters);
+   const isEmpty = useSelector(state => state.chars.isEmpty);
    const offset = useSelector(state => state.chars.offset);
    const dispatch = useDispatch();
    const { isLoading, sendRequest: fetchCharacters } = useHttpRequest();
 
    useEffect(() => {
-      characters.length === 0 && dispatch(update({ newCharacters: initialCharacters }));
+      isEmpty && dispatch(update({ newCharacters: initialCharacters }));
    }, []);
 
    function clickHandler() {
@@ -29,7 +30,7 @@ export default function Home(props) {
 
    return (
       <div className={styles.container}>
-         {characters?.length > 0 && characters.map(character => <Character key={character.id} config={character} />)}
+         {!isEmpty && characters.map(character => <Character key={character.id} config={character} />)}
          {isLoading && <h1>Loading..</h1>}
          <button onClick={clickHandler}>Load more</button>
       </div>

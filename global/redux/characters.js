@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { characters: [], offset: 0 };
+const initialState = { characters: [], isEmpty: true, offset: 0 };
 
 const charSlice = createSlice({
    name: 'characters',
@@ -8,6 +8,7 @@ const charSlice = createSlice({
    reducers: {
       update(state, action) {
          state.characters = [...state.characters, ...action.payload.newCharacters];
+         state.isEmpty = state.characters.length === 0;
          state.offset += 30;
       }
    }
