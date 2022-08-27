@@ -1,0 +1,23 @@
+@use '../../styles/mixins';
+@import '../../styles/variables';
+
+.container {
+  position: relative;
+  @include mixins.flex(row, space-around, flex-start);
+
+  img,
+  .group {
+    width: 40%;
+  }
+
+  .group > h2,
+  .group > div,
+  img {
+    margin: $default-size * 2 0;
+  }
+
+  img {
+    border: $default-size / 4 solid black;
+    border-radius: $default-size;
+  }
+}

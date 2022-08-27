@@ -1,20 +1,21 @@
 import Card from '../card';
+import styles from './styles.module.scss';
 
 export default function Details(props) {
-   console.log('details comp', props.config);
-
-   const { id, name, description, thumbnail, comics, isLoading } = props.config;
+   const { name, description, thumbnail, comics, isLoading } = props.config;
    const { path, extension } = thumbnail;
 
+   console.log('details comp', props.config);
+
    return (
-      <>
-         <div>Details</div>
-         <div>{id}</div>
-         <div>{name}</div>
-         <div>{description}</div>
+      <div className={styles.container}>
          <img src={`${path}.${extension}`} />
-         {isLoading && <div>Loading..</div>}
-         {!isLoading && comics?.map(comic => <Card key={comic.id} config={comic} comic />)}
-      </>
+         <div className={styles.group}>
+            <h2>{name}</h2>
+            <div>{description}</div>
+            {isLoading && <div>Loading..</div>}
+            {!isLoading && comics?.map(comic => <Card key={comic.id} config={comic} comic />)}
+         </div>
+      </div>
    );
 }
