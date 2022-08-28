@@ -38,6 +38,10 @@
       }
     }
 
+    .sub-group {
+      @include mixins.flex;
+    }
+
     @include mixins.media-min-width(90rem) {
       @include mixins.flex(row, space-between, flex-start);
     }

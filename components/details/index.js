@@ -17,6 +17,7 @@ export default function Details(props) {
                <h2>Comics</h2>
                {isLoading && <Loading font='2rem' />}
                {!isLoading && comics?.map(comic => <Card key={comic.id} config={comic} comic />)}
+               {!isLoading && comics?.length === 0 && <p>No comics found</p>}
             </div>
          </div>
       </div>

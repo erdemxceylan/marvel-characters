@@ -8,7 +8,7 @@ export default function Header() {
    const router = useRouter();
 
    return (
-      <div className={styles.container}>
+      <div className={styles.header}>
          <p onClick={() => router.push(HOME)}>
             MARVEL CHARACTERS
          </p>

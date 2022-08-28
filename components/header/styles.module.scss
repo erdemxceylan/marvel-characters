@@ -1,7 +1,7 @@
 @use '../../styles/mixins';
 @import '../../styles/variables';
 
-.container {
+.header {
   @include mixins.flex(row, flex-start);
   position: fixed;
   top: 0;
