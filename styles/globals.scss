@@ -1,3 +1,5 @@
+@import './variables';
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -7,19 +9,10 @@
 html,
 body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: map-get($colors, bg);
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
 }

@@ -4,7 +4,7 @@
 .container,
 .container-comic {
   position: relative;
-  background-color: map-get($colors, bg);
+  background-color: map-get($colors, char-bg);
   border-radius: 0 $default-size;
   box-shadow: $shadow;
 
@@ -32,6 +32,7 @@
     height: 10%;
     border-bottom-left-radius: $default-size;
     background-color: map-get($colors, title);
+    text-align: center;
   }
 }
 
