@@ -27,7 +27,7 @@ export default function Home(props) {
    }
 
    useEffect(() => {
-      // window.addEventListener('scroll', onScroll);
+      window.addEventListener('scroll', onScroll);
 
       if (isEmpty) {
          dispatch(update({ newCharacters: initialCharacters }));
@@ -39,14 +39,15 @@ export default function Home(props) {
          }, data => data && dispatch(update({ newCharacters: data })));
       }
 
-      // return () => window.removeEventListener('scroll', onScroll);
+      return () => window.removeEventListener('scroll', onScroll);
    }, [end]);
 
    return (
       <div className={styles.container}>
-         {!isEmpty && characters.map(character => <Card key={character.id} config={character} />)}
-         {/* {isLoading && <Loading font='3rem' />} */}
-         <Loading font='3rem' />
+         <div className={styles.cards}>
+            {!isEmpty && characters.map(character => <Card key={character.id} config={character} />)}
+         </div>
+         {isLoading && <Loading font='3rem' />}
       </div>
    );
 }
