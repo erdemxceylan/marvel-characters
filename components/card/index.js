@@ -8,7 +8,7 @@ export default function Card(props) {
    const variant = comic ? 'landscape_small' : 'portrait_uncanny';
    const src = `${path}/${variant}.${extension}`;
    const title = comic ? config.title : config.name;
-   const desc = description ? `${description.slice(0, 500)} ...` : 'Description is not provided';
+   const desc = description ? `${description.slice(0, 200)} ...` : 'Description is not provided';
    const router = useRouter();
    const onClick = () => comic ? window.open(config.link, '_blank') : router.push(`/${config.id}`);
 
