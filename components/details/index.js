@@ -1,4 +1,5 @@
 import Card from '../card';
+import Loading from '../loading';
 import styles from './styles.module.scss';
 
 export default function Details(props) {
@@ -14,7 +15,7 @@ export default function Details(props) {
             <img src={imageURL} onClick={() => window.open(imageURL, '_blank')} />
             <div className={styles['sub-group']}>
                <h2>Comics</h2>
-               {isLoading && <div>Loading..</div>}
+               {isLoading && <Loading />}
                {!isLoading && comics?.map(comic => <Card key={comic.id} config={comic} comic />)}
             </div>
          </div>

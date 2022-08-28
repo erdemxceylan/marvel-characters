@@ -4,6 +4,7 @@ import { update } from '../../global/redux/characters';
 import { CONSTANTS } from '../../global/constants';
 import useHttpRequest from '../../hooks/use-http-request';
 import Card from '../card';
+import Loading from '../loading';
 import styles from './styles.module.scss';
 
 const { FETCH_CHARS_URL } = CONSTANTS;
@@ -44,7 +45,7 @@ export default function Home(props) {
    return (
       <div className={styles.container}>
          {!isEmpty && characters.map(character => <Card key={character.id} config={character} />)}
-         {isLoading && <h1>Loading..</h1>}
+         {isLoading && <Loading />}
       </div>
    );
 }
