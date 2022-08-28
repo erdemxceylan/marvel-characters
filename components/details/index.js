@@ -15,7 +15,7 @@ export default function Details(props) {
             <img src={imageURL} onClick={() => window.open(imageURL, '_blank')} />
             <div className={styles['sub-group']}>
                <h2>Comics</h2>
-               {isLoading && <Loading />}
+               {isLoading && <Loading font='2rem' />}
                {!isLoading && comics?.map(comic => <Card key={comic.id} config={comic} comic />)}
             </div>
          </div>

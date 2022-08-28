@@ -45,7 +45,7 @@ export default function Home(props) {
    return (
       <div className={styles.container}>
          {!isEmpty && characters.map(character => <Card key={character.id} config={character} />)}
-         {isLoading && <Loading />}
+         {isLoading && <Loading font='3rem' />}
       </div>
    );
 }
