@@ -1,5 +1,7 @@
 @import '../styles/variables';
+
 .container {
   padding: $default-size * 2;
   min-width: 23rem;
+  margin-top: $header;
 }
