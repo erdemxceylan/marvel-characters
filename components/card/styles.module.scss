@@ -1,8 +1,8 @@
 @use '../../styles/mixins';
 @import '../../styles/variables';
 
-.container,
-.container-comic {
+.character,
+.comic {
   position: relative;
   background-color: map-get($colors, card);
   border-radius: 0 $default-size;
@@ -15,7 +15,7 @@
   }
 }
 
-.container {
+.character {
   @include mixins.char-size;
 
   img {
@@ -35,7 +35,7 @@
   }
 }
 
-.container-comic {
+.comic {
   width: 100%;
   min-height: $small-height + $default-size * 2;
   padding: $default-size;
